@@ -1,12 +1,17 @@
 #!/usr/bin/php
 <?php
 
+include('bitcoin-php/src/bitcoin.inc');
 
-$login = getLoginData('~/Library/Application\ Support/Bitcoin/bitcoin.conf');
+$login_data = getLoginData('~/Library/Application\ Support/Bitcoin/bitcoin.conf');
 
-print_r($login);
+$bc = new BitcoinClient(
+  'http',
+  $login_data['user'],
+  $login_data['pass']
+);
 
-
+echo call_user_func_array(array($bc, 'query'), array_splice($argv, 1)) . "\n";
 
 
 
