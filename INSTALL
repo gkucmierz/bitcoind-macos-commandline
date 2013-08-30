@@ -1,1 +1,2 @@
-sudo ln bitcoind.php /usr/bin/bitcoind
+echo "`pwd`/bitcoind.php \"\$@\"" > /usr/bin/bitcoind
+chmod +x /usr/bin/bitcoind
