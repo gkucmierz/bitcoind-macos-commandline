@@ -1,0 +1,1 @@
+sudo ln bitcoind.php /usr/bin/bitcoind
