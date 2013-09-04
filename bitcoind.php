@@ -11,7 +11,15 @@ $bc = new BitcoinClient(
   $login_data['pass']
 );
 
-echo prettyPrint(json_encode(call_user_func_array(array($bc, 'query'), array_splice($argv, 1)))) . "\n";
+$data = call_user_func_array(array($bc, 'query'), array_splice($argv, 1));
+// echo print_r($data, true) . "\n";
+
+if (gettype($data)=='string') {
+  echo $data . "\n";
+} else {
+  echo prettyPrint(json_encode($data)) . "\n";
+}
+
 
 
 function prettyPrint( $json )
